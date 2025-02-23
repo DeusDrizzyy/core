@@ -8,8 +8,8 @@ O Core foi desenvolvido para ser a base de outros plugins. Ele oferece funcional
 
 ## Criadores
 
-- **Nast** (Discord: [joffreyof](https://discord.com/users/joffreyof))
-- **Steeein** (Discord: [eosteeein](https://discord.com/users/eosteeein))
+- **Nast**
+- **Steeein**
 
 ## Sobre o Nast
 
