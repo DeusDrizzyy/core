@@ -1,0 +1,16 @@
+name: core
+version: '$version'
+main: com.minecraft.net.nast.core.CorePlugin
+description: Obrigado por utilizar este OpenSource em seu servidor!
+authors:
+  - Nast
+  - Steeein
+depend: [ ProtocolLib ]
+
+permissions:
+  core.admin.reload.skin:
+    description: Permite recarregar a biblioteca de skins
+    default: op
+  core.skins.bypass:
+    description: Permite utilizar skins customizadas
+    default: op
