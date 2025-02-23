@@ -13,11 +13,11 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class ConnectionManager {
-    private static final String HOST = "pro-01.astralcloud.com.br";
-    private static final String PORT = "3306";
-    private static final String DATABASE = "s1071_tests";
-    private static final String USERNAME = "u1071_rc9WY2pzJw";
-    private static final String PASSWORD = "37wdeOGNTCNRG1c5G!!J7lOW";
+    private static final String HOST = "";
+    private static final String PORT = "";
+    private static final String DATABASE = "";
+    private static final String USERNAME = "";
+    private static final String PASSWORD = "";
 
     private final Plugin plugin;
     private HikariDataSource dataSource;
