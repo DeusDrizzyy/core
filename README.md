@@ -21,7 +21,7 @@ Oi! Eu sou o **Steeein**, ou **Rich**, como preferir me chamar. Minha principal 
 
 ## APIs Utilizadas no Projeto
 
-- **`ommandframework`**: Utilizado para a criação de comandos.
+- **`commandframework`**: Utilizado para a criação de comandos.
 - **`tadeuBooter`**: Usado para ajudar na criação de menus dinâmicos.
 - **`mariadb`** e **`HikariCP`**: Utilizados para gerenciar a base de dados.
 - **`smart-invs`**: Responsável pela criação de menus interativos.
