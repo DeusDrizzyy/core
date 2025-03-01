@@ -5,11 +5,21 @@
 package com.minecraft.net.nast.core.enums;
 
 import com.github.zyypj.tadeuBooter.minecraft.tool.ItemBuilder;
+<<<<<<< HEAD
+=======
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+>>>>>>> 46c01b9 (Version 2.0)
 import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+<<<<<<< HEAD
+=======
+@RequiredArgsConstructor
+@Getter
+>>>>>>> 46c01b9 (Version 2.0)
 public enum HotbarItems {
 
     COMPASS(7, new ItemBuilder(Material.COMPASS)
@@ -24,6 +34,7 @@ public enum HotbarItems {
     private final int slot;
     private final ItemBuilder item;
 
+<<<<<<< HEAD
     HotbarItems(int slot, ItemBuilder item) {
         this.item = item;
         this.slot = slot;
@@ -37,6 +48,8 @@ public enum HotbarItems {
         return slot;
     }
 
+=======
+>>>>>>> 46c01b9 (Version 2.0)
     public ItemStack toItem(Player player) {
         if (this == PROFILE) {
             return new ItemBuilder(Material.SKULL_ITEM)

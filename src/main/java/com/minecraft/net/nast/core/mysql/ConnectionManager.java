@@ -13,11 +13,19 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class ConnectionManager {
+<<<<<<< HEAD
     private static final String HOST = "";
     private static final String PORT = "";
     private static final String DATABASE = "";
     private static final String USERNAME = "";
     private static final String PASSWORD = "";
+=======
+    private static final String HOST = "pro-01.astralcloud.com.br";
+    private static final String PORT = "3306";
+    private static final String DATABASE = "s1071_tests";
+    private static final String USERNAME = "u1071_rc9WY2pzJw";
+    private static final String PASSWORD = "37wdeOGNTCNRG1c5G!!J7lOW";
+>>>>>>> 46c01b9 (Version 2.0)
 
     private final Plugin plugin;
     private HikariDataSource dataSource;
@@ -36,7 +44,11 @@ public class ConnectionManager {
             }
 
             HikariConfig config = new HikariConfig();
+<<<<<<< HEAD
             config.setDriverClassName("com.minecraft.net.nast.core.relocate.mariadb.jdbc.Driver");
+=======
+            config.setDriverClassName("com.github.nikolai.bukkit.relocate.mariadb.jdbc.Driver");
+>>>>>>> 46c01b9 (Version 2.0)
             config.setJdbcUrl(String.format("jdbc:mariadb://%s:%s/%s", HOST, PORT, DATABASE));
             config.setUsername(USERNAME);
             config.setPassword(PASSWORD);
