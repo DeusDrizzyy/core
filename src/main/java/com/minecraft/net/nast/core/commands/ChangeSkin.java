@@ -19,7 +19,7 @@ public class ChangeSkin {
             permission = "core.skins.bypass",
             target = CommandTarget.PLAYER
     )
-    public void handleCommand(Context<Player> context, String[] args) {
+    public void onChangeSkin(Context<Player> context, String[] args) {
         Player player = context.getSender();
 
         if (!player.hasPermission("core.skins.bypass")) {

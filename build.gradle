@@ -39,16 +39,8 @@ shadowJar {
     relocate 'com.github.zyypj.tadeuBooter', 'com.minecraft.net.nast.core'
     relocate 'fr.minuskube.inv', 'com.minecraft.net.nast.core'
     relocate 'com.github.saiintbrisson.command-framework', 'com.minecraft.net.nast.core'
-    relocate 'org.mariadb', 'com.github.nikolai.bukkit.relocate.mariadb'
+    relocate 'org.mariadb', 'com.minecraft.net.nast.core.relocate.mariadb'
     relocate 'com.zaxxer.hikari', 'com.github.nikolai.bukkit.relocate.hikari'
-
-    dependencies {
-        include(dependency('fr.minuskube.inv:smart-invs'))
-        include(dependency('com.github.zyypj:tadeuBooter'))
-        include(dependency('com.github.SaiintBrisson.command-framework:bukkit'))
-        include(dependency('org.mariadb.jdbc:mariadb-java-client'))
-        include(dependency('com.zaxxer:HikariCP'))
-    }
 }
 
 

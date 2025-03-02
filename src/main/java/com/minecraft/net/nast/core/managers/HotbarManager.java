@@ -6,7 +6,7 @@ import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 public class HotbarManager {
-    public static void onSetup(Player player) {
+    public void all(Player player) {
 
         ItemBuilder item = HotbarItems.PROFILE.getItem();
 
@@ -14,7 +14,6 @@ public class HotbarManager {
         item.setData((byte) 3);
 
         player.getInventory().setItem(HotbarItems.PROFILE.getSlot(), item.build());
-        player.getInventory().setItem(HotbarItems.COMPASS.getSlot(), HotbarItems.COMPASS.toItem(player));
     }
 
 }

@@ -4,7 +4,7 @@
 
 package com.minecraft.net.nast.core.commands;
 
-import com.minecraft.net.nast.core.ui.SkinManagerMenu;
+import com.minecraft.net.nast.core.ui.manager.SkinManagerMenu;
 import me.saiintbrisson.minecraft.command.annotation.Command;
 import me.saiintbrisson.minecraft.command.command.Context;
 import me.saiintbrisson.minecraft.command.target.CommandTarget;
@@ -17,7 +17,7 @@ public class OpenSkins {
             usage = "/skins",
             permission = "lobby.skins.command",
             target = CommandTarget.PLAYER)
-    public void handleCommand(Context<Player> context) {
+    public void onOpenSkins(Context<Player> context) {
         Player player = context.getSender();
 
         if (!player.hasPermission("lobby.skins.command")) {

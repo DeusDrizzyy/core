@@ -5,6 +5,7 @@
 package com.minecraft.net.nast.core.ui;
 
 import com.minecraft.net.nast.core.CorePlugin;
+import com.minecraft.net.nast.core.ui.lib.SkinLibMenu;
 import com.minecraft.net.nast.core.utils.ConvertToDate;
 import com.github.zyypj.tadeuBooter.minecraft.tool.ItemBuilder;
 import com.minecraft.net.nast.core.enums.SkinManager;

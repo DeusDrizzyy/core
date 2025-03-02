@@ -4,10 +4,11 @@
 
 package com.minecraft.net.nast.core.mysql;
 
+import com.minecraft.net.nast.core.CorePlugin;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import lombok.Getter;
 import org.bukkit.Bukkit;
-import org.bukkit.plugin.Plugin;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -18,13 +19,7 @@ public class ConnectionManager {
     private static final String DATABASE = "s1071_tests";
     private static final String USERNAME = "u1071_rc9WY2pzJw";
     private static final String PASSWORD = "37wdeOGNTCNRG1c5G!!J7lOW";
-
-    private final Plugin plugin;
     private HikariDataSource dataSource;
-
-    public ConnectionManager(Plugin plugin) {
-        this.plugin = plugin;
-    }
 
     /**
      * Estabelecer conexão com o MySQL.
@@ -36,7 +31,7 @@ public class ConnectionManager {
             }
 
             HikariConfig config = new HikariConfig();
-            config.setDriverClassName("com.github.nikolai.bukkit.relocate.mariadb.jdbc.Driver");
+            config.setDriverClassName("com.minecraft.net.nast.core.relocate.mariadb.jdbc.Driver");
             config.setJdbcUrl(String.format("jdbc:mariadb://%s:%s/%s", HOST, PORT, DATABASE));
             config.setUsername(USERNAME);
             config.setPassword(PASSWORD);
@@ -62,7 +57,7 @@ public class ConnectionManager {
 
         } catch (Exception e) {
             Bukkit.getConsoleSender().sendMessage("§cFalha na conexão: " + e.getMessage());
-            plugin.getPluginLoader().disablePlugin(plugin);
+            CorePlugin.getInstance().getPluginLoader().disablePlugin(CorePlugin.getInstance());
             return false;
         }
     }

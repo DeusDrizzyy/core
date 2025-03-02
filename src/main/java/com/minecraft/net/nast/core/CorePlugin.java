@@ -7,58 +7,61 @@ package com.minecraft.net.nast.core;
 
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
-import com.minecraft.net.nast.core.listeners.BlockCommands;
-import com.minecraft.net.nast.core.listeners.ChatPlayer;
-import com.minecraft.net.nast.core.listeners.DefaultPlayer;
-import com.minecraft.net.nast.core.listeners.JoinPlayer;
-import com.minecraft.net.nast.core.managers.CMDManager;
 import com.minecraft.net.nast.core.managers.CacheManager;
+import com.minecraft.net.nast.core.managers.RegisterManager;
 import com.minecraft.net.nast.core.mysql.ConnectionManager;
 import fr.minuskube.inv.InventoryManager;
+import lombok.Getter;
+import lombok.var;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-import static org.bukkit.Bukkit.getServer;
-
 public final class CorePlugin extends JavaPlugin {
 
+    @Getter
     private static CorePlugin instance;
-    private static InventoryManager manager;
+
+    @Getter
+    private static InventoryManager inventoryManager;
+
+    @Getter
     private ConnectionManager connectionManager;
+
+    @Getter
     private CacheManager cacheManager;
+
+    @Getter
     private ProtocolManager protocolManager;
+
+    @Getter
     private final Set<UUID> awaitingCustomSkin = new HashSet<>();
 
     @Override
     public void onLoad() {
-        getLogger().info("Carregando...");
+        mensagem("§eCarregando...");
     }
 
     @Override
     public void onEnable() {
         instance = this;
 
-        getServer().getPluginManager().registerEvents(new JoinPlayer(), CorePlugin.getInstance());
-        getServer().getPluginManager().registerEvents(new BlockCommands(), CorePlugin.getInstance());
-        getServer().getPluginManager().registerEvents(new ChatPlayer(), CorePlugin.getInstance());
-        getServer().getPluginManager().registerEvents(new DefaultPlayer(), CorePlugin.getInstance());
+        inventoryManager = new InventoryManager(this);
+        inventoryManager.init();
 
-        manager = new InventoryManager(this);
-        manager.init();
-
-        connectionManager = new ConnectionManager(this);
+        connectionManager = new ConnectionManager();
         if (connectionManager.connect()) {
             cacheManager = new CacheManager();
             cacheManager.load();
         }
 
+        new RegisterManager().apply();
         protocolManager = ProtocolLibrary.getProtocolManager();
 
-        new CMDManager().aplly();
-        getServer().getConsoleSender().sendMessage("§aLigado com sucesso!");
+        mensagem("§aLigado com sucesso!");
     }
 
     @Override
@@ -66,26 +69,15 @@ public final class CorePlugin extends JavaPlugin {
         if (connectionManager != null) {
             connectionManager.disconnect();
         }
-        getServer().getConsoleSender().sendMessage("§cDesligado com sucesso!");
+        mensagem("§cDesligado com sucesso!");
     }
 
-    public static CorePlugin getInstance() {
-        return instance;
+    private void mensagem(String mensagem) {
+        Bukkit.getServer().getConsoleSender().sendMessage(mensagem);
     }
 
-    public static InventoryManager getInventoryManager() {
-        return manager;
-    }
-
-    public ConnectionManager getConnectionManager() {
-        return connectionManager;
-    }
-
-    public CacheManager getCacheManager() {
-        return cacheManager;
-    }
-
-    public Set<UUID> getAwaitingCustomSkin() {
-        return awaitingCustomSkin;
+    public boolean isHookLeafMedals() {
+        var plugin = getServer().getPluginManager().getPlugin("LeafMedals");
+        return plugin != null && plugin.isEnabled();
     }
 }

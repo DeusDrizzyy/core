@@ -74,7 +74,7 @@ public class SkinManager {
     /**
      * Aplica a skin premium, padrão ou a escolhida.
      */
-    public static void applySkin(Player player) {
+    public void applySkin(Player player) {
         UUID playerUUID = player.getUniqueId();
         boolean isPremium = false;
 
@@ -188,7 +188,7 @@ public class SkinManager {
      * AVISO! O PACKET ESTÁ EM CLASSE SEPARADA!
      */
     public static void refreshPlayer(Player player) {
-        RefreshSkin refreshSkin = new RefreshSkin(CorePlugin.getInstance());
+        RefreshSkin refreshSkin = new RefreshSkin();
         refreshSkin.setProtocolManager(com.comphenix.protocol.ProtocolLibrary.getProtocolManager());
 
         Bukkit.getScheduler().runTaskLater(CorePlugin.getInstance(), () -> {

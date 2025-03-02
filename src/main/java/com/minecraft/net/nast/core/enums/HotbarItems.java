@@ -16,10 +16,6 @@ import org.bukkit.inventory.ItemStack;
 @Getter
 public enum HotbarItems {
 
-    COMPASS(7, new ItemBuilder(Material.COMPASS)
-            .setDisplayName("§aServidor")
-            .setLore("§7Clique para mudar de servidor.")),
-
     PROFILE(1, new ItemBuilder(Material.SKULL_ITEM)
             .setData((byte) 3)
             .setDisplayName("§aPerfil")

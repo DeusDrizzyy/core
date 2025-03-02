@@ -20,7 +20,7 @@ public class ReloadSkins {
             permission = "core.admin.reload.skin",
             target = CommandTarget.PLAYER
     )
-    public void handleCommand(Context<Player> context) {
+    public void onReloadSkins(Context<Player> context) {
         Player player = context.getSender();
 
         if (!player.hasPermission("core.admin.reload.skin")) {

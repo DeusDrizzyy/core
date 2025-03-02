@@ -5,7 +5,9 @@
 package com.minecraft.net.nast.core.mysql;
 
 import com.zaxxer.hikari.HikariDataSource;
+import lombok.Getter;
 import org.bukkit.Bukkit;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;

@@ -3,6 +3,8 @@ package com.minecraft.net.nast.core.packets;
 import com.comphenix.protocol.ProtocolManager;
 import com.comphenix.protocol.events.PacketContainer;
 import com.github.zyypj.tadeuBooter.minecraft.tool.ItemBuilder;
+import com.minecraft.net.nast.core.CorePlugin;
+import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -10,22 +12,13 @@ import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.Plugin;
 
 import java.util.List;
 
 public class RefreshSkin {
-    private final Plugin plugin;
+    @Setter
     private ProtocolManager protocolManager;
     private boolean packetSent = false;
-
-    public RefreshSkin(Plugin plugin) {
-        this.plugin = plugin;
-    }
-
-    public void setProtocolManager(ProtocolManager protocolManager) {
-        this.protocolManager = protocolManager;
-    }
 
     public void updateSkin(Player player) {
         Location location = player.getLocation();
@@ -37,7 +30,7 @@ public class RefreshSkin {
                 if (!nearbyPlayer.equals(player)) {
                     nearbyPlayer.hidePlayer(player);
                     sendPlayerInfoPackets(nearbyPlayer, player);
-                    Bukkit.getScheduler().runTaskLater(plugin, () -> nearbyPlayer.showPlayer(player), 2L);
+                    Bukkit.getScheduler().runTaskLater(CorePlugin.getInstance(), () -> nearbyPlayer.showPlayer(player), 2L);
                 } else if (!packetSent) {
                     sendPlayerInfoPackets(nearbyPlayer, player);
                     packetSent = true;
@@ -67,7 +60,7 @@ public class RefreshSkin {
             Bukkit.getConsoleSender().sendMessage("§c" + e.getMessage());
         }
 
-        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+        Bukkit.getScheduler().runTaskLater(CorePlugin.getInstance(), () -> {
             updatePlayerInventory(player, inventoryContents, armorContents);
         }, 2L);
     }

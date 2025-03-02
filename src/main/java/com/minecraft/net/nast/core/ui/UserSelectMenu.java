@@ -6,11 +6,13 @@ package com.minecraft.net.nast.core.ui;
 
 import com.minecraft.net.nast.core.CorePlugin;
 import com.github.zyypj.tadeuBooter.minecraft.tool.ItemBuilder;
+import com.minecraft.net.nast.core.ui.manager.SkinManagerMenu;
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.SmartInventory;
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
 import me.clip.placeholderapi.PlaceholderAPI;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
@@ -20,14 +22,18 @@ public class UserSelectMenu implements InventoryProvider {
     @Override
     public void init(Player player, InventoryContents contents) {
 
-        String medal = PlaceholderAPI.setPlaceholders(player, "%leafmedals_medals%");
+        String medals = "";
+
+        if (CorePlugin.getInstance().isHookLeafMedals()) {
+            medals = ChatColor.translateAlternateColorCodes('&', PlaceholderAPI.setPlaceholders(player, "%leafmedals_medals% "));
+        }
 
         contents.set(1, 2, ClickableItem.empty(
                 new ItemBuilder(Material.SKULL_ITEM)
                         .setData((byte) 3)
                         .setSkullValue(((CraftPlayer) player).getProfile().getProperties().get("textures").iterator().next().getValue())
                         .setDisplayName("§a➜ Suas informações:")
-                        .setLore("§f", "§a▸ §fSeu nickname: §7" + player.getName(), "§a▸ §fSua(s) §emedalha(s): " + medal)
+                        .setLore("§f", "§a▸ §fSeu nickname: §7" + player.getName(), "§a▸ §fSua(s) §emedalha(s): " + medals)
                         .build()
         ));
 
