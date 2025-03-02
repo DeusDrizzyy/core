@@ -25,5 +25,3 @@ Oi! Eu sou o **Steeein**, ou **Rich**, como preferir me chamar. Minha principal 
 - **`tadeuBooter`**: Usado para ajudar na criação de menus dinâmicos.
 - **`mariadb`** e **`HikariCP`**: Utilizados para gerenciar a base de dados.
 - **`smart-invs`**: Responsável pela criação de menus interativos.
-
-problema com a Gradle
